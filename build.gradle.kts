@@ -12,10 +12,10 @@ allprojects {
 }
 
 // The latest LTS version of Java.
-val latestJavaVersion = 21
+val latestJavaVersion = 25
 
 // The Java version in which the project will be compiled.
-val targetJavaVersion = 8
+val targetJavaVersion = 25
 
 idea {
   project {
@@ -89,7 +89,4 @@ subprojects {
 
 tasks {
 
-  withType<Wrapper> {
-    distributionType = Wrapper.DistributionType.ALL
-  }
 }
