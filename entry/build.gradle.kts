@@ -7,5 +7,5 @@ dependencies {
   api(project(":pre_1_7_10"))
   api(project(":from_1_7_10"))
 
-  api(libraries.notchity)
+  api(libs.notchity)
 }

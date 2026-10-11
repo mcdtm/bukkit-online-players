@@ -1,20 +1,18 @@
 pluginManagement {
-
   repositories {
     gradlePluginPortal()
     mavenCentral()
+  }
+
+  plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+    id("com.gradleup.nmcp.settings") version "2.6.1"
   }
 }
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
-
-  versionCatalogs {
-    val fileName = "libraries"
-    create(fileName) {
-      from(files("gradle/$fileName.versions.toml"))
-    }
-  }
+  repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
   repositories {
     mavenCentral()
@@ -24,22 +22,8 @@ dependencyResolutionManagement {
       }
     }
   }
-
-  repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
 
-arrayOf(
-  "entry",
-  "api",
-  "from_1_7_10",
-  "pre_1_7_10",
-).forEach {
-  val name = it.replace(':', '-')
-  val directory = file("./${it.replace(':', '/')}")
-
-  include(name)
-  project(":$name").projectDir = directory
-}
-
+include("entry", "api", "from_1_7_10", "pre_1_7_10")
 rootProject.name = "bukkit-online-players"
 
